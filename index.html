@@ -179,6 +179,29 @@ input[type=range]::-webkit-slider-thumb{
 .matrix-table td:first-child{color:var(--muted);text-align:left;font-size:.78rem}
 .matrix-table td.highlight{color:var(--cyan);font-weight:600}
 
+/* ── Budget Section ── */
+.budget-row{display:flex;gap:.75rem;align-items:flex-end}
+.budget-row .field:first-child{flex:1}
+.budget-row .field:last-child{flex:0 0 130px}
+.budget-result-card{
+  border-radius:14px;padding:1.1rem 1.3rem;margin-bottom:1rem;
+  display:none;gap:1rem;align-items:flex-start;transition:.3s}
+.budget-result-card.within{
+  background:rgba(52,211,153,.08);border:1px solid rgba(52,211,153,.35)}
+.budget-result-card.over{
+  background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.35)}
+.budget-icon{font-size:2rem;line-height:1;flex-shrink:0;padding-top:.1rem}
+.budget-body{flex:1}
+.budget-status-text{font-family:'Orbitron',monospace;font-size:.85rem;font-weight:700;margin-bottom:.25rem}
+.budget-status-text.within{color:#34d399}
+.budget-status-text.over{color:#f87171}
+.budget-detail{font-size:.78rem;color:var(--muted);margin-bottom:.6rem}
+.budget-bar-wrap{background:rgba(255,255,255,.07);border-radius:6px;height:8px;overflow:hidden;margin:.35rem 0}
+.budget-bar-fill{height:100%;border-radius:6px;transition:width 1.2s cubic-bezier(.4,0,.2,1)}
+.budget-bar-fill.within{background:linear-gradient(90deg,#34d399,#10b981)}
+.budget-bar-fill.over{background:linear-gradient(90deg,#f87171,#ef4444)}
+.budget-sqft-tip{font-size:.75rem;color:#9999bb;margin-top:.35rem;font-style:italic}
+
 /* ── Footer ── */
 footer{text-align:center;padding:2rem 0 1rem;
   font-family:'Orbitron',monospace;font-size:.6rem;
@@ -301,6 +324,26 @@ footer{text-align:center;padding:2rem 0 1rem;
   <div class="caption" id="cond-cap">🟡 Well maintained and ready to move in</div>
 </div>
 
+<!-- 08 Budget Limit -->
+<div class="card">
+  <div class="sec-head"><span class="sec-num">08</span><span class="sec-title">💰 Price Budget Limit</span></div>
+  <div class="budget-row">
+    <div class="field">
+      <label>Your Maximum Budget</label>
+      <input type="number" id="budget-val" value="50" min="1" placeholder="e.g. 50" oninput="updateBudget()">
+    </div>
+    <div class="field">
+      <label>Unit</label>
+      <select id="budget-unit" onchange="updateBudget()">
+        <option value="100000">Lakhs (L)</option>
+        <option value="10000000">Crores (Cr)</option>
+      </select>
+    </div>
+  </div>
+  <div class="info-box" id="budget-display">💰 Max Budget: ₹50 L &nbsp;=&nbsp; ₹50,00,000</div>
+  <div class="caption" style="margin-top:.5rem">ℹ️ Set your upper price limit — we'll check if the predicted price fits your budget.</div>
+</div>
+
 <!-- Predict -->
 <button class="btn-predict" id="predict-btn" onclick="predict()">◈ INITIATE VALUATION SCAN ◈</button>
 
@@ -316,6 +359,19 @@ footer{text-align:center;padding:2rem 0 1rem;
   </div>
 
   <div class="tags" id="tags"></div>
+
+  <!-- Budget Result -->
+  <div class="budget-result-card" id="budget-result-card">
+    <div class="budget-icon" id="budget-icon">✅</div>
+    <div class="budget-body">
+      <div class="budget-status-text" id="budget-status-text">Within Budget!</div>
+      <div class="budget-detail" id="budget-detail"></div>
+      <div class="budget-bar-wrap">
+        <div class="budget-bar-fill" id="budget-bar" style="width:0%"></div>
+      </div>
+      <div class="budget-sqft-tip" id="budget-sqft-tip"></div>
+    </div>
+  </div>
 
   <!-- Feature Importance -->
   <div class="card">
@@ -445,10 +501,56 @@ async function predict(){
     document.getElementById('matrix-wrap').innerHTML=tbl;
 
     document.getElementById('result').style.display='block';
+    // ── Budget Check ──
+    const budgetAmt  = parseFloat(document.getElementById('budget-val').value) || 0;
+    const budgetUnit = parseInt(document.getElementById('budget-unit').value);
+    const budgetTotal = budgetAmt * budgetUnit;
+    const bCard = document.getElementById('budget-result-card');
+    if(budgetTotal > 0){
+      const isWithin = d.price <= budgetTotal;
+      const diff     = Math.abs(d.price - budgetTotal);
+      const pct      = Math.min((d.price / budgetTotal) * 100, 140);
+      const maxArea  = d.price_sqft > 0 ? Math.floor(budgetTotal / d.price_sqft) : 0;
+      const unitLabel= budgetUnit===100000?'L':'Cr';
+
+      bCard.className = 'budget-result-card ' + (isWithin ? 'within' : 'over');
+      bCard.style.display = 'flex';
+      document.getElementById('budget-icon').textContent = isWithin ? '✅' : '⚠️';
+
+      const st = document.getElementById('budget-status-text');
+      st.textContent  = isWithin ? 'Within Budget!' : 'Over Budget';
+      st.className    = 'budget-status-text ' + (isWithin ? 'within' : 'over');
+
+      document.getElementById('budget-detail').textContent = isWithin
+        ? `You save ${fmt(diff)} under your budget of ${fmt(budgetTotal)}`
+        : `${fmt(diff)} over your budget of ${fmt(budgetTotal)}`;
+
+      const bar = document.getElementById('budget-bar');
+      bar.className = 'budget-bar-fill ' + (isWithin ? 'within' : 'over');
+      setTimeout(()=>{ bar.style.width = pct + '%'; }, 100);
+
+      document.getElementById('budget-sqft-tip').textContent =
+        maxArea > 0
+          ? `With ₹${budgetAmt}${unitLabel} budget you can afford up to ${maxArea} sq ft at ₹${d.price_sqft.toLocaleString('en-IN')}/sqft in ${body.location}.`
+          : '';
+    } else {
+      bCard.style.display = 'none';
+    }
+
     document.getElementById('result').scrollIntoView({behavior:'smooth',block:'start'});
   }catch(e){alert('Error: Could not reach the server. Is server.py running?');}
 
   btn.disabled=false;btn.textContent='◈ INITIATE VALUATION SCAN ◈';
+}
+
+// ── Budget Display ──
+function updateBudget(){
+  const v = parseFloat(document.getElementById('budget-val').value) || 0;
+  const u = parseInt(document.getElementById('budget-unit').value);
+  const total = v * u;
+  const label = u === 100000 ? 'L' : 'Cr';
+  document.getElementById('budget-display').innerHTML =
+    `💰 Max Budget: ₹${v} ${label} &nbsp;=&nbsp; ₹${total.toLocaleString('en-IN')}`;
 }
 
 // ── Custom Cursor ──
