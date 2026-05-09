@@ -1,0 +1,84 @@
+area,bedrooms,bathrooms,age,location,furnishing,parking,condition,price
+800,2,1,20,Rural Area,Unfurnished,0,Poor,1500000
+850,2,1,18,Rural Area,Unfurnished,0,Good,1800000
+900,2,2,15,Rural Area,Semi-Furnished,1,Good,2300000
+950,3,2,12,Rural Area,Semi-Furnished,1,Good,2700000
+1000,3,2,10,Rural Area,Semi-Furnished,0,Good,2900000
+1050,3,2,8,Rural Area,Fully Furnished,1,Good,3500000
+1100,3,3,6,Rural Area,Fully Furnished,1,Excellent,4000000
+1150,3,3,5,Rural Area,Fully Furnished,2,Excellent,4500000
+1200,4,3,4,Rural Area,Fully Furnished,2,Excellent,5000000
+1300,4,4,2,Rural Area,Unfurnished,0,Poor,2800000
+1400,4,4,1,Rural Area,Semi-Furnished,1,Good,4200000
+1500,5,4,0,Rural Area,Fully Furnished,2,Excellent,6000000
+750,1,1,25,Rural Area,Unfurnished,0,Poor,1200000
+900,2,1,20,Rural Area,Semi-Furnished,0,Good,2100000
+1100,3,2,10,Rural Area,Fully Furnished,1,Good,3800000
+1600,5,5,0,Rural Area,Fully Furnished,3,Excellent,7500000
+700,1,1,30,Rural Area,Unfurnished,0,Poor,1000000
+1500,4,3,5,Rural Area,Semi-Furnished,1,Good,5500000
+1200,3,3,8,Rural Area,Fully Furnished,2,Excellent,5800000
+2000,6,6,0,Rural Area,Fully Furnished,3,Excellent,12000000
+750,2,1,22,Tier-2 City,Unfurnished,0,Poor,2200000
+800,2,1,20,Tier-2 City,Unfurnished,0,Good,2800000
+850,2,2,18,Tier-2 City,Semi-Furnished,1,Good,3500000
+900,3,2,15,Tier-2 City,Semi-Furnished,1,Good,4200000
+950,3,2,12,Tier-2 City,Semi-Furnished,0,Good,4500000
+1000,3,2,10,Tier-2 City,Fully Furnished,1,Good,5500000
+1050,3,3,8,Tier-2 City,Fully Furnished,1,Excellent,6500000
+1100,4,3,6,Tier-2 City,Fully Furnished,2,Excellent,7500000
+1150,4,3,5,Tier-2 City,Fully Furnished,2,Excellent,8200000
+1200,4,4,4,Tier-2 City,Fully Furnished,2,Excellent,9000000
+1300,4,4,2,Tier-2 City,Unfurnished,0,Poor,4500000
+1400,5,4,1,Tier-2 City,Semi-Furnished,1,Good,8000000
+1500,5,5,0,Tier-2 City,Fully Furnished,2,Excellent,11000000
+800,2,1,22,Tier-2 City,Semi-Furnished,0,Good,3200000
+1000,3,2,8,Tier-2 City,Unfurnished,0,Good,4800000
+1700,6,5,0,Tier-2 City,Fully Furnished,3,Excellent,15000000
+1800,6,6,0,Tier-2 City,Fully Furnished,3,Excellent,18000000
+700,1,1,28,Tier-2 City,Unfurnished,0,Poor,1800000
+1500,4,3,5,Tier-2 City,Semi-Furnished,1,Good,9000000
+2000,6,6,0,Tier-2 City,Fully Furnished,3,Excellent,20000000
+800,2,1,20,Tier-1 City,Unfurnished,0,Poor,4000000
+850,2,1,18,Tier-1 City,Unfurnished,0,Good,5000000
+900,2,2,15,Tier-1 City,Semi-Furnished,1,Good,6500000
+950,3,2,12,Tier-1 City,Semi-Furnished,1,Good,7500000
+1000,3,2,10,Tier-1 City,Semi-Furnished,0,Good,8000000
+1050,3,3,8,Tier-1 City,Fully Furnished,1,Good,9500000
+1100,3,3,6,Tier-1 City,Fully Furnished,1,Excellent,11000000
+1150,4,3,5,Tier-1 City,Fully Furnished,2,Excellent,13000000
+1200,4,4,4,Tier-1 City,Fully Furnished,2,Excellent,14500000
+1300,4,4,2,Tier-1 City,Unfurnished,0,Poor,7500000
+1400,5,4,1,Tier-1 City,Semi-Furnished,1,Good,13000000
+1500,5,5,0,Tier-1 City,Fully Furnished,2,Excellent,18000000
+800,2,1,22,Tier-1 City,Semi-Furnished,0,Good,5500000
+1000,3,2,8,Tier-1 City,Unfurnished,0,Good,7000000
+1200,4,3,5,Tier-1 City,Fully Furnished,1,Good,13500000
+1600,5,5,0,Tier-1 City,Fully Furnished,3,Excellent,22000000
+700,1,1,25,Tier-1 City,Unfurnished,0,Poor,3000000
+1500,4,3,5,Tier-1 City,Semi-Furnished,1,Good,15000000
+2000,6,6,0,Tier-1 City,Fully Furnished,3,Excellent,35000000
+900,2,2,18,Tier-1 City,Unfurnished,0,Poor,5200000
+800,2,1,20,Metro City,Unfurnished,0,Poor,6000000
+850,2,1,18,Metro City,Unfurnished,0,Good,7500000
+900,2,2,15,Metro City,Semi-Furnished,1,Good,9500000
+950,3,2,12,Metro City,Semi-Furnished,1,Good,11000000
+1000,3,2,10,Metro City,Semi-Furnished,0,Good,12000000
+1050,3,3,8,Metro City,Fully Furnished,1,Good,14000000
+1100,3,3,6,Metro City,Fully Furnished,1,Excellent,16500000
+1150,4,3,5,Metro City,Fully Furnished,2,Excellent,19000000
+1200,4,4,4,Metro City,Fully Furnished,2,Excellent,21000000
+1300,5,4,2,Metro City,Fully Furnished,2,Excellent,25000000
+1400,5,4,1,Metro City,Semi-Furnished,1,Good,20000000
+1500,5,5,0,Metro City,Fully Furnished,2,Excellent,30000000
+900,2,2,18,Metro City,Unfurnished,0,Poor,7000000
+1000,3,2,12,Metro City,Unfurnished,0,Good,10000000
+1200,4,3,6,Metro City,Semi-Furnished,1,Good,17000000
+1600,6,5,0,Metro City,Fully Furnished,3,Excellent,35000000
+1700,6,5,1,Metro City,Fully Furnished,3,Excellent,38000000
+750,2,1,25,Metro City,Unfurnished,0,Poor,5500000
+1100,3,3,8,Metro City,Semi-Furnished,1,Good,15000000
+700,1,1,20,Metro City,Unfurnished,0,Poor,4500000
+1500,4,3,5,Metro City,Semi-Furnished,1,Good,22000000
+2000,6,6,0,Metro City,Fully Furnished,3,Excellent,50000000
+1000,3,2,15,Metro City,Unfurnished,0,Poor,8500000

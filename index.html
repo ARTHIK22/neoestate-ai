@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>NeoEstate AI – Property Price Predictor</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --cyan:#00f5d4;--purple:#7c3aed;--pink:#f0abfc;
+  --bg:#05050f;--card:rgba(255,255,255,0.03);
+  --border:rgba(124,58,237,0.3);--text:#e0e0ff;--muted:#8888bb;
+}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-height:100vh;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;
+  background:radial-gradient(ellipse 80% 50% at 50% -20%,#1a053388,transparent),
+              radial-gradient(ellipse 60% 40% at 80% 110%,#001a3388,transparent);
+  pointer-events:none;z-index:0}
+
+/* scrollbar */
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-thumb{background:var(--purple);border-radius:4px}
+
+.wrap{max-width:900px;margin:0 auto;padding:1.5rem;position:relative;z-index:1}
+
+/* ── Hero ── */
+.hero{text-align:center;padding:2.5rem 0 1.5rem}
+.hero-eye{font-family:'Orbitron',monospace;font-size:.65rem;letter-spacing:.35em;
+  color:var(--cyan);text-transform:uppercase;margin-bottom:.8rem;
+  animation:pulse 2.5s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+.hero h1{font-family:'Orbitron',monospace;font-size:2.6rem;font-weight:900;
+  background:linear-gradient(135deg,var(--cyan),var(--purple),var(--pink));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  filter:drop-shadow(0 0 30px #7c3aed66);margin-bottom:.5rem}
+.hero p{color:var(--muted);font-size:.95rem;font-weight:300}
+
+/* ── Stats Bar ── */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;margin:1.2rem 0}
+.stat{background:linear-gradient(135deg,rgba(0,245,212,.04),rgba(124,58,237,.08));
+  border:1px solid rgba(0,245,212,.2);border-radius:12px;padding:.9rem;text-align:center;
+  transition:.3s;position:relative;overflow:hidden}
+.stat::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--cyan),transparent)}
+.stat:hover{border-color:rgba(0,245,212,.5);transform:translateY(-2px);box-shadow:0 0 20px rgba(0,245,212,.1)}
+.stat-lbl{font-family:'Orbitron',monospace;font-size:.6rem;letter-spacing:.12em;
+  text-transform:uppercase;color:#6666aa;margin-bottom:.35rem}
+.stat-val{font-family:'Orbitron',monospace;font-size:1.1rem;font-weight:700;color:var(--cyan)}
+
+/* ── Divider ── */
+.div{height:1px;margin:1.4rem 0;
+  background:linear-gradient(90deg,transparent,rgba(124,58,237,.5),rgba(0,245,212,.3),transparent)}
+
+/* ── Glass Card / Section ── */
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;
+  padding:1.4rem 1.6rem;margin-bottom:1rem;
+  box-shadow:0 4px 24px rgba(124,58,237,.08),inset 0 1px 0 rgba(255,255,255,.05);
+  transition:.3s}
+.card:hover{border-color:rgba(124,58,237,.55);box-shadow:0 4px 40px rgba(124,58,237,.18)}
+.sec-head{display:flex;align-items:center;gap:.6rem;margin-bottom:1rem}
+.sec-num{font-family:'Orbitron',monospace;font-size:.6rem;font-weight:700;color:var(--cyan);
+  background:rgba(0,245,212,.08);border:1px solid rgba(0,245,212,.3);
+  border-radius:6px;padding:.15rem .4rem;letter-spacing:.1em}
+.sec-title{font-family:'Orbitron',monospace;font-size:.8rem;font-weight:700;
+  color:#c4b5fd;letter-spacing:.08em;text-transform:uppercase}
+
+/* ── Form Controls ── */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.field{display:flex;flex-direction:column;gap:.4rem}
+label{font-size:.8rem;color:var(--muted);font-weight:500;letter-spacing:.03em}
+select,input[type=number]{
+  background:rgba(255,255,255,.04);border:1px solid var(--border);
+  border-radius:10px;color:var(--text);padding:.6rem .9rem;font-size:.9rem;
+  font-family:'Inter',sans-serif;outline:none;transition:.3s;width:100%}
+select:focus,input[type=number]:focus{border-color:var(--purple);box-shadow:0 0 0 3px rgba(124,58,237,.15)}
+select option{background:#0d0d25}
+.caption{font-size:.75rem;color:#6666aa;border-left:2px solid rgba(124,58,237,.4);
+  padding-left:.6rem;margin-top:.4rem;font-style:italic}
+.info-box{background:rgba(0,245,212,.05);border:1px solid rgba(0,245,212,.2);
+  border-radius:10px;padding:.6rem 1rem;font-size:.82rem;color:var(--cyan);margin-top:.5rem}
+
+/* ── Radio Group ── */
+.radio-group{display:flex;gap:.75rem;flex-wrap:wrap}
+.radio-option{flex:1;min-width:120px}
+.radio-option input{display:none}
+.radio-option label{
+  display:flex;align-items:center;justify-content:center;gap:.4rem;
+  background:rgba(255,255,255,.03);border:1px solid var(--border);
+  border-radius:10px;padding:.65rem 1rem;cursor:pointer;
+  font-size:.85rem;transition:.25s;text-align:center;font-weight:500}
+.radio-option input:checked+label{
+  background:rgba(124,58,237,.18);border-color:var(--purple);
+  color:#c4b5fd;box-shadow:0 0 16px rgba(124,58,237,.25)}
+.radio-option label:hover{border-color:rgba(124,58,237,.5)}
+
+/* ── Slider ── */
+.slider-wrap{margin-top:.2rem}
+input[type=range]{
+  -webkit-appearance:none;width:100%;height:4px;border-radius:4px;
+  background:linear-gradient(90deg,var(--purple),var(--cyan));outline:none;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;width:18px;height:18px;border-radius:50%;
+  background:var(--cyan);border:2px solid var(--bg);box-shadow:0 0 10px var(--cyan)}
+.slider-labels{display:flex;justify-content:space-between;margin-top:.4rem}
+.slider-labels span{font-size:.7rem;color:var(--muted)}
+.slider-current{text-align:center;font-family:'Orbitron',monospace;
+  font-size:.75rem;color:var(--cyan);margin-top:.3rem;letter-spacing:.08em}
+
+/* ── Predict Button ── */
+.btn-predict{
+  width:100%;padding:1rem;margin-top:.5rem;
+  font-family:'Orbitron',monospace;font-size:.9rem;font-weight:700;
+  letter-spacing:.15em;text-transform:uppercase;
+  background:linear-gradient(135deg,var(--purple),#4f46e5);
+  border:1px solid rgba(124,58,237,.6);border-radius:12px;
+  color:#fff;cursor:pointer;transition:.3s;
+  box-shadow:0 0 30px rgba(124,58,237,.4)}
+.btn-predict:hover{background:linear-gradient(135deg,#9333ea,#6366f1);
+  box-shadow:0 0 55px rgba(124,58,237,.7);transform:translateY(-2px)}
+.btn-predict:active{transform:translateY(0)}
+.btn-predict:disabled{opacity:.5;cursor:not-allowed;transform:none}
+
+/* ── Result ── */
+#result{display:none}
+.price-box{
+  position:relative;overflow:hidden;
+  background:linear-gradient(135deg,rgba(0,245,212,.06),rgba(124,58,237,.12),rgba(240,171,252,.06));
+  border:1px solid rgba(124,58,237,.5);border-radius:20px;
+  padding:2.2rem 2rem;text-align:center;margin-bottom:1rem;
+  animation:glow 3s ease-in-out infinite}
+@keyframes glow{
+  0%,100%{box-shadow:0 0 60px rgba(124,58,237,.2)}
+  50%{box-shadow:0 0 90px rgba(124,58,237,.4),0 0 30px rgba(0,245,212,.1)}}
+.price-box::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--purple),var(--cyan),transparent)}
+.price-eye{font-family:'Orbitron',monospace;font-size:.6rem;letter-spacing:.3em;
+  color:var(--cyan);text-transform:uppercase;margin-bottom:.6rem}
+.price-main{font-family:'Orbitron',monospace;font-size:2.8rem;font-weight:900;
+  background:linear-gradient(135deg,var(--cyan),var(--purple),var(--pink));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  filter:drop-shadow(0 0 20px #7c3aed88)}
+.price-range{font-size:.82rem;color:var(--muted);margin-top:.4rem}
+.price-sqft{font-family:'Orbitron',monospace;font-size:.75rem;color:var(--cyan);margin-top:.3rem}
+
+/* ── Tags ── */
+.tags{display:flex;flex-wrap:wrap;gap:.4rem;margin:.8rem 0}
+.tag{font-family:'Orbitron',monospace;font-size:.65rem;
+  background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.3);
+  border-radius:20px;padding:.2rem .65rem;color:#c4b5fd;letter-spacing:.04em}
+
+/* ── Importance Chart ── */
+.imp-row{display:flex;align-items:center;gap:.7rem;margin-bottom:.55rem}
+.imp-label{font-size:.78rem;color:var(--muted);width:90px;text-align:right;flex-shrink:0}
+.imp-bar-wrap{flex:1;background:rgba(255,255,255,.05);border-radius:4px;height:8px;overflow:hidden}
+.imp-bar{height:100%;border-radius:4px;
+  background:linear-gradient(90deg,var(--purple),var(--cyan));
+  transition:width 1s cubic-bezier(.4,0,.2,1)}
+.imp-pct{font-family:'Orbitron',monospace;font-size:.68rem;color:var(--cyan);width:38px;flex-shrink:0}
+
+/* ── Matrix Table ── */
+.matrix-table{width:100%;border-collapse:collapse;font-size:.82rem;margin-top:.5rem}
+.matrix-table th{font-family:'Orbitron',monospace;font-size:.65rem;letter-spacing:.08em;
+  color:var(--cyan);padding:.5rem .7rem;text-align:center;border-bottom:1px solid var(--border)}
+.matrix-table td{padding:.5rem .7rem;text-align:center;color:var(--text);
+  border-bottom:1px solid rgba(124,58,237,.1);transition:.2s}
+.matrix-table tr:hover td{background:rgba(124,58,237,.08)}
+.matrix-table td:first-child{color:var(--muted);text-align:left;font-size:.78rem}
+.matrix-table td.highlight{color:var(--cyan);font-weight:600}
+
+/* ── Footer ── */
+footer{text-align:center;padding:2rem 0 1rem;
+  font-family:'Orbitron',monospace;font-size:.6rem;
+  letter-spacing:.12em;color:#333355;text-transform:uppercase}
+
+/* hidden section */
+#house-details{display:none}
+#land-condition{display:block}
+
+@media(max-width:600px){
+  .hero h1{font-size:1.8rem}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .grid2,.grid3{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-eye">◈ AI-Powered Real Estate Intelligence ◈</div>
+  <h1>NeoEstate AI</h1>
+  <p>Predict property value with machine learning precision</p>
+</div>
+
+<!-- Stats -->
+<div class="stats">
+  <div class="stat"><div class="stat-lbl">Engine</div><div class="stat-val" style="font-size:.75rem;color:#c4b5fd">Random Forest</div></div>
+  <div class="stat"><div class="stat-lbl">Training Rows</div><div class="stat-val" style="color:#34d399">82</div></div>
+  <div class="stat"><div class="stat-lbl">R² Score</div><div class="stat-val" id="r2">—</div></div>
+  <div class="stat"><div class="stat-lbl">Avg Error</div><div class="stat-val" id="mae" style="color:var(--pink);font-size:.85rem">—</div></div>
+</div>
+
+<div class="div"></div>
+
+<!-- 01 Location -->
+<div class="card">
+  <div class="sec-head"><span class="sec-num">01</span><span class="sec-title">📍 Location Matrix</span></div>
+  <div class="field">
+    <label>Select Location Type</label>
+    <select id="location" onchange="updateCaption('loc')">
+      <option>Metro City</option>
+      <option>Tier-1 City</option>
+      <option>Tier-2 City</option>
+      <option>Rural Area</option>
+    </select>
+    <div class="caption" id="loc-cap">🌆 Major metropolitan — premium demand & pricing</div>
+  </div>
+</div>
+
+<!-- 02 Property Type -->
+<div class="card">
+  <div class="sec-head"><span class="sec-num">02</span><span class="sec-title">🏗️ Property Type</span></div>
+  <div class="radio-group">
+    <div class="radio-option">
+      <input type="radio" name="ptype" id="pt-land" value="land" onchange="toggleType()">
+      <label for="pt-land">🏞️ Vacant Land</label>
+    </div>
+    <div class="radio-option">
+      <input type="radio" name="ptype" id="pt-house" value="house" checked onchange="toggleType()">
+      <label for="pt-house">🏠 Built House</label>
+    </div>
+  </div>
+</div>
+
+<!-- 03 Dimensions -->
+<div class="card">
+  <div class="sec-head"><span class="sec-num">03</span><span class="sec-title">📐 Plot Dimensions</span></div>
+  <div class="grid2">
+    <div class="field"><label>Length (feet)</label><input type="number" id="length" value="35" min="1" oninput="calcArea()"></div>
+    <div class="field"><label>Width (feet)</label><input type="number" id="width" value="30" min="1" oninput="calcArea()"></div>
+  </div>
+  <div class="info-box" id="area-display">◈ Area: 1050 sq ft · 97.5 m²</div>
+</div>
+
+<!-- 04 House Details -->
+<div class="card" id="house-details" style="display:block">
+  <div class="sec-head"><span class="sec-num">04</span><span class="sec-title">🏡 Interior Details</span></div>
+  <div class="grid3">
+    <div class="field"><label>🛏 Bedrooms</label><input type="number" id="bedrooms" value="3" min="1" max="10"></div>
+    <div class="field"><label>🚿 Bathrooms</label><input type="number" id="bathrooms" value="2" min="1" max="8"></div>
+    <div class="field"><label>📅 Age (years)</label><input type="number" id="age" value="5" min="0" max="50"></div>
+  </div>
+</div>
+
+<!-- 05 Furnishing -->
+<div class="card" id="furnishing-card">
+  <div class="sec-head"><span class="sec-num">05</span><span class="sec-title">🛋️ Furnishing Status</span></div>
+  <div class="slider-wrap">
+    <input type="range" id="furnishing" min="0" max="2" value="1" oninput="updateSlider('furnishing')">
+    <div class="slider-labels"><span>Unfurnished</span><span>Semi-Furnished</span><span>Fully Furnished</span></div>
+    <div class="slider-current" id="furnishing-val">Semi-Furnished</div>
+  </div>
+  <div class="caption" id="furn-cap">🛏️ Basic furniture, wardrobes, kitchen fittings</div>
+</div>
+
+<!-- 06 Parking -->
+<div class="card" id="parking-card">
+  <div class="sec-head"><span class="sec-num">06</span><span class="sec-title">🚗 Parking Bays</span></div>
+  <div class="radio-group">
+    <div class="radio-option"><input type="radio" name="parking" id="p0" value="0" checked><label for="p0">❌ None</label></div>
+    <div class="radio-option"><input type="radio" name="parking" id="p1" value="1"><label for="p1">● 1 Bay</label></div>
+    <div class="radio-option"><input type="radio" name="parking" id="p2" value="2"><label for="p2">●● 2 Bays</label></div>
+    <div class="radio-option"><input type="radio" name="parking" id="p3" value="3"><label for="p3">●●● 3+</label></div>
+  </div>
+</div>
+
+<!-- 07 Condition -->
+<div class="card">
+  <div class="sec-head"><span class="sec-num">07</span><span class="sec-title">🔧 Property Condition</span></div>
+  <div class="slider-wrap">
+    <input type="range" id="condition" min="0" max="2" value="1" oninput="updateSlider('condition')">
+    <div class="slider-labels"><span>Poor</span><span>Good</span><span>Excellent</span></div>
+    <div class="slider-current" id="condition-val">Good</div>
+  </div>
+  <div class="caption" id="cond-cap">🟡 Well maintained and ready to move in</div>
+</div>
+
+<!-- Predict -->
+<button class="btn-predict" id="predict-btn" onclick="predict()">◈ INITIATE VALUATION SCAN ◈</button>
+
+<div class="div"></div>
+
+<!-- Result -->
+<div id="result">
+  <div class="price-box">
+    <div class="price-eye">◈ AI Valuation Complete ◈</div>
+    <div class="price-main" id="price-main">—</div>
+    <div class="price-range" id="price-range">—</div>
+    <div class="price-sqft" id="price-sqft">—</div>
+  </div>
+
+  <div class="tags" id="tags"></div>
+
+  <!-- Feature Importance -->
+  <div class="card">
+    <div class="sec-head"><span class="sec-num">⚡</span><span class="sec-title">Feature Importance</span></div>
+    <div id="importance-chart"></div>
+  </div>
+
+  <!-- Matrix -->
+  <div class="card">
+    <div class="sec-head"><span class="sec-num">🔄</span><span class="sec-title">Furnishing × Condition Matrix</span></div>
+    <div id="matrix-wrap"></div>
+  </div>
+
+  <div class="div"></div>
+</div>
+
+<footer>NeoEstate AI · Powered by Random Forest · Estimates are indicative only</footer>
+</div>
+
+<script>
+const LOC_CAPS = {
+  'Metro City':'🌆 Major metropolitan — premium demand & pricing',
+  'Tier-1 City':'🏙️ Large city with strong infrastructure',
+  'Tier-2 City':'🏘️ Mid-sized city with growing demand',
+  'Rural Area':'🌾 Outskirts / village — base land rates'
+};
+const FURN_OPTS = ['Unfurnished','Semi-Furnished','Fully Furnished'];
+const COND_OPTS = ['Poor','Good','Excellent'];
+const FURN_CAPS = ['🪑 Bare shell — no furniture or fittings','🛏️ Basic furniture, wardrobes, kitchen fittings','✨ Premium interiors, ACs, modular kitchen, appliances'];
+const COND_CAPS = ['🔴 Requires major renovation or repairs','🟡 Well maintained and ready to move in','🟢 Recently renovated — premium finishes'];
+
+function fmt(v){
+  if(v>=1e7)return'₹'+(v/1e7).toFixed(2)+' Cr';
+  if(v>=1e5)return'₹'+(v/1e5).toFixed(1)+' L';
+  return'₹'+Math.round(v).toLocaleString('en-IN');
+}
+
+function updateCaption(type){
+  if(type==='loc') document.getElementById('loc-cap').textContent=LOC_CAPS[document.getElementById('location').value];
+}
+
+function updateSlider(id){
+  const val=parseInt(document.getElementById(id).value);
+  if(id==='furnishing'){
+    document.getElementById('furnishing-val').textContent=FURN_OPTS[val];
+    document.getElementById('furn-cap').textContent=FURN_CAPS[val];
+  } else {
+    document.getElementById('condition-val').textContent=COND_OPTS[val];
+    document.getElementById('cond-cap').textContent=COND_CAPS[val];
+  }
+}
+
+function calcArea(){
+  const l=parseFloat(document.getElementById('length').value)||0;
+  const w=parseFloat(document.getElementById('width').value)||0;
+  const a=l*w;
+  document.getElementById('area-display').textContent=`◈ Area: ${a} sq ft · ${(a*0.0929).toFixed(1)} m²`;
+}
+
+function toggleType(){
+  const isHouse=document.getElementById('pt-house').checked;
+  document.getElementById('house-details').style.display=isHouse?'block':'none';
+  document.getElementById('furnishing-card').style.display=isHouse?'block':'none';
+  document.getElementById('parking-card').style.display=isHouse?'block':'none';
+  const nums=['04','05','06'];
+  // update sec nums if needed
+}
+
+async function predict(){
+  const btn=document.getElementById('predict-btn');
+  const l=parseFloat(document.getElementById('length').value)||0;
+  const w=parseFloat(document.getElementById('width').value)||0;
+  const area=l*w;
+  if(area<=0){alert('Please enter valid dimensions.');return;}
+
+  const isHouse=document.getElementById('pt-house').checked;
+  btn.disabled=true;btn.textContent='◈ SCANNING... ◈';
+
+  const body={
+    area,
+    bedrooms:isHouse?parseInt(document.getElementById('bedrooms').value):0,
+    bathrooms:isHouse?parseInt(document.getElementById('bathrooms').value):0,
+    age:isHouse?parseInt(document.getElementById('age').value):0,
+    location:document.getElementById('location').value,
+    furnishing:isHouse?FURN_OPTS[parseInt(document.getElementById('furnishing').value)]:'Unfurnished',
+    parking:parseInt(document.querySelector('input[name=parking]:checked').value),
+    condition:COND_OPTS[parseInt(document.getElementById('condition').value)]
+  };
+
+  try{
+    const res=await fetch('/api/predict',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+    const d=await res.json();
+
+    // Price
+    document.getElementById('price-main').textContent=fmt(d.price);
+    document.getElementById('price-range').textContent=`Range: ${fmt(d.price_low)} – ${fmt(d.price_high)}`;
+    document.getElementById('price-sqft').textContent=`◈ ${fmt(d.price_sqft)} per sq ft ◈`;
+
+    // Tags
+    const tags=[`📍 ${body.location}`,`📐 ${area} sqft`,`🛋️ ${body.furnishing}`,
+      `🔧 ${body.condition}`,`🚗 ${body.parking} parking`];
+    if(isHouse) tags.push(`🛏 ${body.bedrooms}bed`,`🚿 ${body.bathrooms}bath`,`📅 ${body.age}yr`);
+    document.getElementById('tags').innerHTML=tags.map(t=>`<span class="tag">${t}</span>`).join('');
+
+    // Importance
+    const ic=document.getElementById('importance-chart');
+    ic.innerHTML=d.importance.map(x=>`
+      <div class="imp-row">
+        <div class="imp-label">${x.feature}</div>
+        <div class="imp-bar-wrap"><div class="imp-bar" style="width:${x.value}%"></div></div>
+        <div class="imp-pct">${x.value}%</div>
+      </div>`).join('');
+
+    // Matrix
+    const FURN=['Unfurnished','Semi-Furnished','Fully Furnished'];
+    const COND=['Poor','Good','Excellent'];
+    let tbl=`<table class="matrix-table"><thead><tr><th></th>${COND.map(c=>`<th>${c}</th>`).join('')}</tr></thead><tbody>`;
+    FURN.forEach(f=>{
+      tbl+=`<tr><td>${f}</td>`;
+      COND.forEach(c=>{
+        const isHL=(f===body.furnishing&&c===body.condition);
+        tbl+=`<td class="${isHL?'highlight':''}">${fmt(d.matrix[f][c])}</td>`;
+      });
+      tbl+=`</tr>`;
+    });
+    tbl+=`</tbody></table>`;
+    document.getElementById('matrix-wrap').innerHTML=tbl;
+
+    document.getElementById('result').style.display='block';
+    document.getElementById('result').scrollIntoView({behavior:'smooth',block:'start'});
+  }catch(e){alert('Error: Could not reach the server. Is server.py running?');}
+
+  btn.disabled=false;btn.textContent='◈ INITIATE VALUATION SCAN ◈';
+}
+
+// Init
+window.onload=async()=>{
+  calcArea();
+  try{
+    const s=await fetch('/api/stats').then(r=>r.json());
+    document.getElementById('r2').textContent=s.r2.toFixed(2);
+    document.getElementById('mae').textContent=fmt(s.mae);
+  }catch(e){}
+};
+</script>
+</body>
+</html>
