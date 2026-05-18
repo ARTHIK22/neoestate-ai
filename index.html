@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>NeoEstate AI â€“ Property Price Predictor</title>
+<title>NeoEstate AI – Property Price Predictor</title>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -34,7 +34,7 @@ body::before{content:'';position:fixed;inset:0;
 
 .wrap{max-width:900px;margin:0 auto;padding:1.5rem;position:relative;z-index:1}
 
-/* â”€â”€ Hero â”€â”€ */
+/* ── Hero ── */
 .hero{text-align:center;padding:2.5rem 0 1.5rem}
 .hero-eye{font-family:'Orbitron',monospace;font-size:.65rem;letter-spacing:.35em;
   color:var(--cyan);text-transform:uppercase;margin-bottom:.8rem;
@@ -46,7 +46,7 @@ body::before{content:'';position:fixed;inset:0;
   filter:drop-shadow(0 0 30px #7c3aed66);margin-bottom:.5rem}
 .hero p{color:var(--muted);font-size:.95rem;font-weight:300}
 
-/* â”€â”€ Stats Bar â”€â”€ */
+/* ── Stats Bar ── */
 .stats{display:grid;grid-template-columns:repeat(5,1fr);gap:.75rem;margin:1.2rem 0}
 .stat{background:linear-gradient(135deg,rgba(0,245,212,.07),rgba(124,58,237,.12));
   border:1px solid rgba(0,245,212,.3);border-radius:12px;padding:.9rem;text-align:center;
@@ -58,11 +58,11 @@ body::before{content:'';position:fixed;inset:0;
   text-transform:uppercase;color:#9999bb;margin-bottom:.35rem}
 .stat-val{font-family:'Orbitron',monospace;font-size:1.1rem;font-weight:700;color:var(--cyan)}
 
-/* â”€â”€ Divider â”€â”€ */
+/* ── Divider ── */
 .div{height:1px;margin:1.4rem 0;
   background:linear-gradient(90deg,transparent,rgba(124,58,237,.5),rgba(0,245,212,.3),transparent)}
 
-/* â”€â”€ Glass Card / Section â”€â”€ */
+/* ── Glass Card / Section ── */
 .card{background:rgba(255,255,255,.07);border:1px solid rgba(124,58,237,.45);border-radius:16px;
   padding:1.4rem 1.6rem;margin-bottom:1rem;
   box-shadow:0 4px 24px rgba(124,58,237,.12),inset 0 1px 0 rgba(255,255,255,.08);
@@ -75,7 +75,7 @@ body::before{content:'';position:fixed;inset:0;
 .sec-title{font-family:'Orbitron',monospace;font-size:.8rem;font-weight:700;
   color:#c4b5fd;letter-spacing:.08em;text-transform:uppercase}
 
-/* â”€â”€ Form Controls â”€â”€ */
+/* ── Form Controls ── */
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
 .field{display:flex;flex-direction:column;gap:.4rem}
@@ -91,7 +91,7 @@ select option{background:#141432}
 .info-box{background:rgba(0,245,212,.08);border:1px solid rgba(0,245,212,.3);
   border-radius:10px;padding:.6rem 1rem;font-size:.82rem;color:var(--cyan);margin-top:.5rem}
 
-/* â”€â”€ Radio Group â”€â”€ */
+/* ── Radio Group ── */
 .radio-group{display:flex;gap:.75rem;flex-wrap:wrap}
 .radio-option{flex:1;min-width:120px}
 .radio-option input{display:none}
@@ -105,7 +105,7 @@ select option{background:#141432}
   color:#d8c4ff;box-shadow:0 0 20px rgba(124,58,237,.35)}
 .radio-option label:hover{border-color:rgba(0,245,212,.6);background:rgba(0,245,212,.06)}
 
-/* â”€â”€ Slider â”€â”€ */
+/* ── Slider ── */
 .slider-wrap{margin-top:.2rem}
 input[type=range]{
   -webkit-appearance:none;width:100%;height:4px;border-radius:4px;
@@ -118,7 +118,7 @@ input[type=range]::-webkit-slider-thumb{
 .slider-current{text-align:center;font-family:'Orbitron',monospace;
   font-size:.75rem;color:var(--cyan);margin-top:.3rem;letter-spacing:.08em}
 
-/* â”€â”€ Predict Button â”€â”€ */
+/* ── Predict Button ── */
 .btn-predict{
   width:100%;padding:1rem;margin-top:.5rem;
   font-family:'Orbitron',monospace;font-size:.9rem;font-weight:700;
@@ -132,7 +132,7 @@ input[type=range]::-webkit-slider-thumb{
 .btn-predict:active{transform:translateY(0)}
 .btn-predict:disabled{opacity:.5;cursor:not-allowed;transform:none}
 
-/* â”€â”€ Result â”€â”€ */
+/* ── Result ── */
 #result{display:none}
 .price-box{
   position:relative;overflow:hidden;
@@ -154,13 +154,13 @@ input[type=range]::-webkit-slider-thumb{
 .price-range{font-size:.82rem;color:var(--muted);margin-top:.4rem}
 .price-sqft{font-family:'Orbitron',monospace;font-size:.75rem;color:var(--cyan);margin-top:.3rem}
 
-/* â”€â”€ Tags â”€â”€ */
+/* ── Tags ── */
 .tags{display:flex;flex-wrap:wrap;gap:.4rem;margin:.8rem 0}
 .tag{font-family:'Orbitron',monospace;font-size:.65rem;
   background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.3);
   border-radius:20px;padding:.2rem .65rem;color:#c4b5fd;letter-spacing:.04em}
 
-/* â”€â”€ Importance Chart â”€â”€ */
+/* ── Importance Chart ── */
 .imp-row{display:flex;align-items:center;gap:.7rem;margin-bottom:.55rem}
 .imp-label{font-size:.78rem;color:var(--muted);width:90px;text-align:right;flex-shrink:0}
 .imp-bar-wrap{flex:1;background:rgba(255,255,255,.05);border-radius:4px;height:8px;overflow:hidden}
@@ -169,7 +169,7 @@ input[type=range]::-webkit-slider-thumb{
   transition:width 1s cubic-bezier(.4,0,.2,1)}
 .imp-pct{font-family:'Orbitron',monospace;font-size:.68rem;color:var(--cyan);width:38px;flex-shrink:0}
 
-/* â”€â”€ Matrix Table â”€â”€ */
+/* ── Matrix Table ── */
 .matrix-table{width:100%;border-collapse:collapse;font-size:.82rem;margin-top:.5rem}
 .matrix-table th{font-family:'Orbitron',monospace;font-size:.65rem;letter-spacing:.08em;
   color:var(--cyan);padding:.5rem .7rem;text-align:center;border-bottom:1px solid var(--border)}
@@ -179,7 +179,7 @@ input[type=range]::-webkit-slider-thumb{
 .matrix-table td:first-child{color:var(--muted);text-align:left;font-size:.78rem}
 .matrix-table td.highlight{color:var(--cyan);font-weight:600}
 
-/* â”€â”€ Budget Section â”€â”€ */
+/* ── Budget Section ── */
 .budget-row{display:flex;gap:.75rem;align-items:flex-end}
 .budget-row .field:first-child{flex:1}
 .budget-row .field:last-child{flex:0 0 130px}
@@ -202,7 +202,7 @@ input[type=range]::-webkit-slider-thumb{
 .budget-bar-fill.over{background:linear-gradient(90deg,#f87171,#ef4444)}
 .budget-sqft-tip{font-size:.75rem;color:#9999bb;margin-top:.35rem;font-style:italic}
 
-/* â”€â”€ Custom Rate Comparison â”€â”€ */
+/* ── Custom Rate Comparison ── */
 .rate-compare-card{
   display:none;border-radius:14px;padding:1.2rem 1.4rem;
   margin-bottom:1rem;
@@ -230,7 +230,7 @@ input[type=range]::-webkit-slider-thumb{
 .rate-delta.lower{background:rgba(52,211,153,.1);color:#34d399;border:1px solid rgba(52,211,153,.25)}
 .rate-delta.equal{background:rgba(124,58,237,.1);color:#c4b5fd;border:1px solid rgba(124,58,237,.25)}
 
-/* â”€â”€ Footer â”€â”€ */
+/* ── Footer ── */
 footer{text-align:center;padding:2rem 0 1rem;
   font-family:'Orbitron',monospace;font-size:.6rem;
   letter-spacing:.12em;color:#555577;text-transform:uppercase}
@@ -277,7 +277,7 @@ footer{text-align:center;padding:2rem 0 1rem;
 
 <!-- Hero -->
 <div class="hero">
-  <div class="hero-eye">â—ˆ AI-Powered Real Estate Intelligence â—ˆ</div>
+  <div class="hero-eye">◈ AI-Powered Real Estate Intelligence ◈</div>
   <h1>NeoEstate AI</h1>
   <p>Predict property value with machine learning precision</p>
 </div>
@@ -286,16 +286,16 @@ footer{text-align:center;padding:2rem 0 1rem;
 <div class="stats">
   <div class="stat"><div class="stat-lbl">Engine</div><div class="stat-val" style="font-size:.75rem;color:#c4b5fd">Random Forest</div></div>
   <div class="stat"><div class="stat-lbl">Data Source</div><div class="stat-val" style="font-size:.62rem;color:#34d399" title="Bengaluru House Prices (Kaggle) + tier augmentation">Kaggle + Real</div></div>
-  <div class="stat"><div class="stat-lbl">Training Rows</div><div class="stat-val" style="color:#34d399" id="n-train">â€”</div></div>
-  <div class="stat"><div class="stat-lbl">RÂ² Score</div><div class="stat-val" id="r2">â€”</div></div>
-  <div class="stat"><div class="stat-lbl">Avg Error</div><div class="stat-val" id="mae" style="color:var(--pink);font-size:.85rem">â€”</div></div>
+  <div class="stat"><div class="stat-lbl">Training Rows</div><div class="stat-val" style="color:#34d399" id="n-train">–</div></div>
+  <div class="stat"><div class="stat-lbl">R² Score</div><div class="stat-val" id="r2">–</div></div>
+  <div class="stat"><div class="stat-lbl">Avg Error</div><div class="stat-val" id="mae" style="color:var(--pink);font-size:.85rem">–</div></div>
 </div>
 
 <div class="div"></div>
 
 <!-- 01 Location & City -->
 <div class="card">
-  <div class="sec-head"><span class="sec-num">01</span><span class="sec-title">ðŸ“ Location &amp; City</span></div>
+  <div class="sec-head"><span class="sec-num">01</span><span class="sec-title">📍 Location &amp; City</span></div>
   <div class="grid2">
     <div class="field">
       <label>Location Tier</label>
@@ -311,80 +311,80 @@ footer{text-align:center;padding:2rem 0 1rem;
       <select id="city" onchange="citySelected()"></select>
     </div>
   </div>
-  <div class="caption" id="loc-cap" style="margin-top:.6rem">ðŸŒ† Major metropolitan â€” premium demand &amp; pricing</div>
+  <div class="caption" id="loc-cap" style="margin-top:.6rem">🌆 Major metropolitan — premium demand &amp; pricing</div>
 </div>
 
 <!-- 02 Property Type -->
 <div class="card">
-  <div class="sec-head"><span class="sec-num">02</span><span class="sec-title">ðŸ—ï¸ Property Type</span></div>
+  <div class="sec-head"><span class="sec-num">02</span><span class="sec-title">🏗️ Property Type</span></div>
   <div class="radio-group">
     <div class="radio-option">
       <input type="radio" name="ptype" id="pt-land" value="land" onchange="toggleType()">
-      <label for="pt-land">ðŸžï¸ Vacant Land</label>
+      <label for="pt-land">🏞️ Vacant Land</label>
     </div>
     <div class="radio-option">
       <input type="radio" name="ptype" id="pt-house" value="house" checked onchange="toggleType()">
-      <label for="pt-house">ðŸ  Built House</label>
+      <label for="pt-house">🏠 Built House</label>
     </div>
   </div>
 </div>
 
 <!-- 03 Dimensions -->
 <div class="card">
-  <div class="sec-head"><span class="sec-num">03</span><span class="sec-title">ðŸ“ Plot Dimensions</span></div>
+  <div class="sec-head"><span class="sec-num">03</span><span class="sec-title">📐 Plot Dimensions</span></div>
   <div class="grid2">
     <div class="field"><label>Length (feet)</label><input type="number" id="length" value="35" min="1" oninput="calcArea()"></div>
     <div class="field"><label>Width (feet)</label><input type="number" id="width" value="30" min="1" oninput="calcArea()"></div>
   </div>
-  <div class="info-box" id="area-display">â—ˆ Area: 1050 sq ft Â· 97.5 mÂ²</div>
+  <div class="info-box" id="area-display">◈ Area: 1050 sq ft · 97.5 m²</div>
 </div>
 
 <!-- 04 House Details -->
 <div class="card" id="house-details" style="display:block">
-  <div class="sec-head"><span class="sec-num">04</span><span class="sec-title">ðŸ¡ Interior Details</span></div>
+  <div class="sec-head"><span class="sec-num">04</span><span class="sec-title">🏡 Interior Details</span></div>
   <div class="grid3">
-    <div class="field"><label>ðŸ› Bedrooms</label><input type="number" id="bedrooms" value="3" min="1" max="10"></div>
-    <div class="field"><label>ðŸš¿ Bathrooms</label><input type="number" id="bathrooms" value="2" min="1" max="8"></div>
-    <div class="field"><label>ðŸ“… Age (years)</label><input type="number" id="age" value="5" min="0" max="50"></div>
+    <div class="field"><label>🛏 Bedrooms</label><input type="number" id="bedrooms" value="3" min="1" max="10"></div>
+    <div class="field"><label>🚿 Bathrooms</label><input type="number" id="bathrooms" value="2" min="1" max="8"></div>
+    <div class="field"><label>📅 Age (years)</label><input type="number" id="age" value="5" min="0" max="50"></div>
   </div>
 </div>
 
 <!-- 05 Furnishing -->
 <div class="card" id="furnishing-card">
-  <div class="sec-head"><span class="sec-num">05</span><span class="sec-title">ðŸ›‹ï¸ Furnishing Status</span></div>
+  <div class="sec-head"><span class="sec-num">05</span><span class="sec-title">🛋️ Furnishing Status</span></div>
   <div class="slider-wrap">
     <input type="range" id="furnishing" min="0" max="2" value="1" oninput="updateSlider('furnishing')">
     <div class="slider-labels"><span>Unfurnished</span><span>Semi-Furnished</span><span>Fully Furnished</span></div>
     <div class="slider-current" id="furnishing-val">Semi-Furnished</div>
   </div>
-  <div class="caption" id="furn-cap">ðŸ›ï¸ Basic furniture, wardrobes, kitchen fittings</div>
+  <div class="caption" id="furn-cap">🛏️ Basic furniture, wardrobes, kitchen fittings</div>
 </div>
 
 <!-- 06 Parking -->
 <div class="card" id="parking-card">
-  <div class="sec-head"><span class="sec-num">06</span><span class="sec-title">ðŸš— Parking Bays</span></div>
+  <div class="sec-head"><span class="sec-num">06</span><span class="sec-title">🚗 Parking Bays</span></div>
   <div class="radio-group">
-    <div class="radio-option"><input type="radio" name="parking" id="p0" value="0" checked><label for="p0">âŒ None</label></div>
-    <div class="radio-option"><input type="radio" name="parking" id="p1" value="1"><label for="p1">â— 1 Bay</label></div>
-    <div class="radio-option"><input type="radio" name="parking" id="p2" value="2"><label for="p2">â—â— 2 Bays</label></div>
-    <div class="radio-option"><input type="radio" name="parking" id="p3" value="3"><label for="p3">â—â—â— 3+</label></div>
+    <div class="radio-option"><input type="radio" name="parking" id="p0" value="0" checked><label for="p0">❌ None</label></div>
+    <div class="radio-option"><input type="radio" name="parking" id="p1" value="1"><label for="p1">● 1 Bay</label></div>
+    <div class="radio-option"><input type="radio" name="parking" id="p2" value="2"><label for="p2">●● 2 Bays</label></div>
+    <div class="radio-option"><input type="radio" name="parking" id="p3" value="3"><label for="p3">●●● 3+</label></div>
   </div>
 </div>
 
 <!-- 07 Condition -->
 <div class="card">
-  <div class="sec-head"><span class="sec-num">07</span><span class="sec-title">ðŸ”§ Property Condition</span></div>
+  <div class="sec-head"><span class="sec-num">07</span><span class="sec-title">🔧 Property Condition</span></div>
   <div class="slider-wrap">
     <input type="range" id="condition" min="0" max="2" value="1" oninput="updateSlider('condition')">
     <div class="slider-labels"><span>Poor</span><span>Good</span><span>Excellent</span></div>
     <div class="slider-current" id="condition-val">Good</div>
   </div>
-  <div class="caption" id="cond-cap">ðŸŸ¡ Well maintained and ready to move in</div>
+  <div class="caption" id="cond-cap">🟡 Well maintained and ready to move in</div>
 </div>
 
 <!-- 08 Budget Limit -->
 <div class="card">
-  <div class="sec-head"><span class="sec-num">08</span><span class="sec-title">ðŸ’° Price Budget Limit</span></div>
+  <div class="sec-head"><span class="sec-num">08</span><span class="sec-title">💰 Price Budget Limit</span></div>
   <div class="budget-row">
     <div class="field">
       <label>Your Maximum Budget</label>
@@ -398,26 +398,26 @@ footer{text-align:center;padding:2rem 0 1rem;
       </select>
     </div>
   </div>
-  <div class="info-box" id="budget-display">ðŸ’° Max Budget: â‚¹50 L &nbsp;=&nbsp; â‚¹50,00,000</div>
-  <div class="caption" style="margin-top:.5rem">â„¹ï¸ Set your upper price limit â€” we'll check if the predicted price fits your budget.</div>
+  <div class="info-box" id="budget-display">💰 Max Budget: ₹50 L &nbsp;=&nbsp; ₹50,00,000</div>
+  <div class="caption" style="margin-top:.5rem">ℹ️ Set your upper price limit — we'll check if the predicted price fits your budget.</div>
 </div>
 
 <!-- 09 Custom Rate -->
 <div class="card">
-  <div class="sec-head"><span class="sec-num">09</span><span class="sec-title">ðŸ“ Custom Price Rate</span></div>
+  <div class="sec-head"><span class="sec-num">09</span><span class="sec-title">📊 Custom Price Rate</span></div>
   <div class="field">
     <label>Your Local Market Rate (&#x20b9; per sq ft)</label>
     <input type="number" id="custom-rate" value="" min="100" placeholder="e.g. 6500" oninput="updateCustomRate()">
   </div>
   <div class="info-box" id="custom-rate-display" style="margin-top:.5rem">
-    ðŸ“ Enter your local &#x20b9;/sqft rate to get a local market estimate alongside AI prediction
+    📊 Enter your local &#x20b9;/sqft rate to get a local market estimate alongside AI prediction
   </div>
-  <div class="caption" style="margin-top:.5rem">â„¹ï¸ Rates vary by location â€” enter your local rate (e.g. Mumbai = â‚¹18,500/sqft, Jaipur = â‚¹5,000/sqft).</div>
+  <div class="caption" style="margin-top:.5rem">ℹ️ Rates vary by location — enter your local rate (e.g. Mumbai = ₹18,500/sqft, Jaipur = ₹5,000/sqft).</div>
 </div>
 
 <!-- 10 EMI Calculator -->
 <div class="card">
-  <div class="sec-head"><span class="sec-num">10</span><span class="sec-title">ðŸ¦ EMI Calculator</span></div>
+  <div class="sec-head"><span class="sec-num">10</span><span class="sec-title">🏦 EMI Calculator</span></div>
   <p class="caption" style="margin-bottom:.8rem">Estimate your monthly home loan payment based on the predicted price.</p>
   <div class="grid3">
     <div class="field"><label>Down Payment (%)</label><input type="number" id="down-pct" value="20" min="5" max="80" oninput="calcEMI()"></div>
@@ -429,7 +429,7 @@ footer{text-align:center;padding:2rem 0 1rem;
 
 <!-- 11 Investment ROI -->
 <div class="card">
-  <div class="sec-head"><span class="sec-num">11</span><span class="sec-title">ðŸ“ˆ Investment ROI</span></div>
+  <div class="sec-head"><span class="sec-num">11</span><span class="sec-title">📈 Investment ROI</span></div>
   <p class="caption" style="margin-bottom:.8rem">Estimate your property's future value and return on investment.</p>
   <div class="grid2">
     <div class="field"><label>Annual Appreciation (%)</label><input type="number" id="roi-rate" value="7" min="1" max="25" step="0.5" oninput="calcROI()"></div>
@@ -439,40 +439,40 @@ footer{text-align:center;padding:2rem 0 1rem;
 </div>
 
 <!-- Predict -->
-<button class="btn-predict" id="predict-btn" onclick="predict()">â—ˆ INITIATE VALUATION SCAN â—ˆ</button>
+<button class="btn-predict" id="predict-btn" onclick="predict()">◈ INITIATE VALUATION SCAN ◈</button>
 
 <div class="div"></div>
 
 <!-- Result -->
 <div id="result">
   <div class="price-box">
-    <div class="price-eye">â—ˆ AI Valuation Complete â—ˆ</div>
-    <div class="price-main" id="price-main">â€”</div>
-    <div class="price-range" id="price-range">â€”</div>
-    <div class="price-sqft" id="price-sqft">â€”</div>
+    <div class="price-eye">◈ AI Valuation Complete ◈</div>
+    <div class="price-main" id="price-main">–</div>
+    <div class="price-range" id="price-range">–</div>
+    <div class="price-sqft" id="price-sqft">–</div>
   </div>
 
   <div class="tags" id="tags"></div>
 
   <!-- Model Comparison -->
   <div class="card" id="model-compare" style="margin-bottom:1rem">
-    <div class="sec-head"><span class="sec-num">ðŸ¤–</span><span class="sec-title">Model Comparison</span></div>
+    <div class="sec-head"><span class="sec-num">🤖</span><span class="sec-title">Model Comparison</span></div>
     <div class="grid3" id="model-cards"></div>
   </div>
 
   <!-- Custom Rate Comparison Card -->
   <div class="rate-compare-card" id="rate-compare-card">
-    <div class="rate-compare-title">â—ˆ Local Market vs AI Model Comparison â—ˆ</div>
+    <div class="rate-compare-title">◈ Local Market vs AI Model Comparison ◈</div>
     <div class="rate-compare-grid">
       <div class="rate-box local">
-        <div class="rate-box-label">ðŸ“ Local Market</div>
-        <div class="rate-box-price local" id="local-price">â€”</div>
+        <div class="rate-box-label">📍 Local Market</div>
+        <div class="rate-box-price local" id="local-price">–</div>
         <div class="rate-box-sub" id="local-rate-sub">based on your rate</div>
       </div>
       <div class="rate-vs">VS</div>
       <div class="rate-box ai">
-        <div class="rate-box-label">ðŸ¤– AI Model</div>
-        <div class="rate-box-price ai" id="ai-price-compare">â€”</div>
+        <div class="rate-box-label">🤖 AI Model</div>
+        <div class="rate-box-price ai" id="ai-price-compare">–</div>
         <div class="rate-box-sub">Random Forest</div>
       </div>
     </div>
@@ -481,7 +481,7 @@ footer{text-align:center;padding:2rem 0 1rem;
 
   <!-- Budget Result -->
   <div class="budget-result-card" id="budget-result-card">
-    <div class="budget-icon" id="budget-icon">âœ…</div>
+    <div class="budget-icon" id="budget-icon">✅</div>
     <div class="budget-body">
       <div class="budget-status-text" id="budget-status-text">Within Budget!</div>
       <div class="budget-detail" id="budget-detail"></div>
@@ -494,35 +494,35 @@ footer{text-align:center;padding:2rem 0 1rem;
 
   <!-- Feature Importance -->
   <div class="card">
-    <div class="sec-head"><span class="sec-num">âš¡</span><span class="sec-title">Feature Importance</span></div>
+    <div class="sec-head"><span class="sec-num">⚡</span><span class="sec-title">Feature Importance</span></div>
     <div id="importance-chart"></div>
   </div>
 
   <!-- Matrix -->
   <div class="card">
-    <div class="sec-head"><span class="sec-num">ðŸ”„</span><span class="sec-title">Furnishing Ã— Condition Matrix</span></div>
+    <div class="sec-head"><span class="sec-num">🔄</span><span class="sec-title">Furnishing × Condition Matrix</span></div>
     <div id="matrix-wrap"></div>
   </div>
 
   <div class="div"></div>
-  <button class="btn-save" id="btn-save" onclick="saveProperty()" style="display:none">âŠ• Save This Prediction</button>
+  <button class="btn-save" id="btn-save" onclick="saveProperty()" style="display:none">⊕ Save This Prediction</button>
 </div>
 
 <div id="saved-panel" style="display:none;margin-bottom:1.5rem">
   <div class="div"></div>
-  <div class="sec-head" style="margin-bottom:.8rem"><span class="sec-num">ðŸ’¾</span><span class="sec-title">Saved Comparisons</span></div>
+  <div class="sec-head" style="margin-bottom:.8rem"><span class="sec-num">💾</span><span class="sec-title">Saved Comparisons</span></div>
   <div id="saved-table"></div>
 </div>
 
-<footer>NeoEstate AI Â· Powered by Random Forest Â· Estimates are indicative only</footer>
+<footer>NeoEstate AI · Powered by Random Forest · Estimates are indicative only</footer>
 </div>
 
 <script>
 const LOC_CAPS = {
-  'Metro City':'ðŸŒ† Major metropolitan â€” premium demand & pricing',
-  'Tier-1 City':'ðŸ™ï¸ Large city with strong infrastructure',
-  'Tier-2 City':'ðŸ˜ï¸ Mid-sized city with growing demand',
-  'Rural Area':'ðŸŒ¾ Outskirts / village â€” base land rates'
+  'Metro City':'🌆 Major metropolitan — premium demand & pricing',
+  'Tier-1 City':'🏙️ Large city with strong infrastructure',
+  'Tier-2 City':'🏘️ Mid-sized city with growing demand',
+  'Rural Area':'🌾 Outskirts / village — base land rates'
 };
 const CITY_DATA = {
   'Metro City':[{name:'Mumbai',rate:18500},{name:'Delhi',rate:15000},{name:'Bangalore',rate:12500},{name:'Chennai',rate:10000},{name:'Kolkata',rate:8500}],
@@ -532,14 +532,14 @@ const CITY_DATA = {
 };
 const FURN_OPTS = ['Unfurnished','Semi-Furnished','Fully Furnished'];
 const COND_OPTS = ['Poor','Good','Excellent'];
-const FURN_CAPS = ['ðŸª‘ Bare shell â€” no furniture or fittings','ðŸ›ï¸ Basic furniture, wardrobes, kitchen fittings','âœ¨ Premium interiors, ACs, modular kitchen, appliances'];
-const COND_CAPS = ['ðŸ”´ Requires major renovation or repairs','ðŸŸ¡ Well maintained and ready to move in','ðŸŸ¢ Recently renovated â€” premium finishes'];
+const FURN_CAPS = ['🪑 Bare shell — no furniture or fittings','🛏️ Basic furniture, wardrobes, kitchen fittings','✨ Premium interiors, ACs, modular kitchen, appliances'];
+const COND_CAPS = ['🔴 Requires major renovation or repairs','🟡 Well maintained and ready to move in','🟢 Recently renovated — premium finishes'];
 let lastPrice = 0, lastPriceSqft = 0, lastBody = {};
 
 function fmt(v){
-  if(v>=1e7)return'â‚¹'+(v/1e7).toFixed(2)+' Cr';
-  if(v>=1e5)return'â‚¹'+(v/1e5).toFixed(1)+' L';
-  return'â‚¹'+Math.round(v).toLocaleString('en-IN');
+  if(v>=1e7)return'₹'+(v/1e7).toFixed(2)+' Cr';
+  if(v>=1e5)return'₹'+(v/1e5).toFixed(1)+' L';
+  return'₹'+Math.round(v).toLocaleString('en-IN');
 }
 
 function updateTier(){
@@ -573,7 +573,7 @@ function calcArea(){
   const l=parseFloat(document.getElementById('length').value)||0;
   const w=parseFloat(document.getElementById('width').value)||0;
   const a=l*w;
-  document.getElementById('area-display').textContent=`â—ˆ Area: ${a} sq ft Â· ${(a*0.0929).toFixed(1)} mÂ²`;
+  document.getElementById('area-display').textContent=`◈ Area: ${a} sq ft · ${(a*0.0929).toFixed(1)} m²`;
   updateCustomRate();
 }
 
@@ -639,7 +639,7 @@ function renderSaved(){
   const rows = saved.map((p,i)=>`<tr>
     <td>${p.city}</td><td>${p.price}</td><td>${p.sqft}</td><td>${p.area}</td>
     <td>${p.furnishing}</td><td>${p.condition}</td><td>${p.ts}</td>
-    <td><button class="del-btn" onclick="deleteSaved(${i})">âœ•</button></td>
+    <td><button class="del-btn" onclick="deleteSaved(${i})">✕</button></td>
   </tr>`).join('');
   document.getElementById('saved-table').innerHTML=`<table class="saved-tbl">
     <thead><tr><th>City</th><th>Price</th><th>Rate/sqft</th><th>Area</th><th>Furnishing</th><th>Condition</th><th>Time</th><th></th></tr></thead>
@@ -660,7 +660,7 @@ async function predict(){
   const area=l*w;
   if(area<=0){alert('Please enter valid dimensions.');return;}
   const isHouse=document.getElementById('pt-house').checked;
-  btn.disabled=true;btn.textContent='â—ˆ SCANNING... â—ˆ';
+  btn.disabled=true;btn.textContent='◈ SCANNING... ◈';
   const body={
     area,
     bedrooms:isHouse?parseInt(document.getElementById('bedrooms').value):0,
@@ -674,16 +674,16 @@ async function predict(){
   try{
     const res=await fetch('/api/predict',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
     const d=await res.json();
-    if(d.error){alert('Error: '+d.error);btn.disabled=false;btn.textContent='â—ˆ INITIATE VALUATION SCAN â—ˆ';return;}
+    if(d.error){alert('Error: '+d.error);btn.disabled=false;btn.textContent='◈ INITIATE VALUATION SCAN ◈';return;}
 
     lastPrice=d.price; lastPriceSqft=d.price_sqft; lastBody=body;
 
     document.getElementById('price-main').textContent=fmt(d.price);
-    document.getElementById('price-range').textContent=`Range: ${fmt(d.price_low)} â€“ ${fmt(d.price_high)}`;
-    document.getElementById('price-sqft').textContent=`â—ˆ ${fmt(d.price_sqft)} per sq ft â—ˆ`;
+    document.getElementById('price-range').textContent=`Range: ${fmt(d.price_low)} — ${fmt(d.price_high)}`;
+    document.getElementById('price-sqft').textContent=`◈ ${fmt(d.price_sqft)} per sq ft ◈`;
 
-    const tags=[`ðŸ“ ${body.location}`,`ðŸ“ ${area} sqft`,`ðŸ›‹ï¸ ${body.furnishing}`,`ðŸ”§ ${body.condition}`,`ðŸš— ${body.parking} parking`];
-    if(isHouse) tags.push(`ðŸ› ${body.bedrooms}bed`,`ðŸš¿ ${body.bathrooms}bath`,`ðŸ“… ${body.age}yr`);
+    const tags=[`📍 ${body.location}`,`📐 ${area} sqft`,`🛋️ ${body.furnishing}`,`🔧 ${body.condition}`,`🚗 ${body.parking} parking`];
+    if(isHouse) tags.push(`🛏 ${body.bedrooms}bed`,`🚿 ${body.bathrooms}bath`,`📅 ${body.age}yr`);
     document.getElementById('tags').innerHTML=tags.map(t=>`<span class="tag">${t}</span>`).join('');
 
     // Model comparison
@@ -692,7 +692,7 @@ async function predict(){
       <div class="model-card${i===0?' primary':''}">
         <div class="model-card-name">${name}</div>
         <div class="model-card-price ${mColors[i]}">${fmt(m.price)}</div>
-        <div class="model-card-meta">RÂ² ${m.r2.toFixed(2)}</div>
+        <div class="model-card-meta">R² ${m.r2.toFixed(2)}</div>
       </div>`).join('');
 
     // Feature importance
@@ -723,13 +723,13 @@ async function predict(){
       const localPrice=Math.round(customRate*area),diff=d.price-localPrice;
       const diffPct=((Math.abs(diff)/localPrice)*100).toFixed(1);
       document.getElementById('local-price').textContent=fmt(localPrice);
-      document.getElementById('local-rate-sub').textContent=`@ â‚¹${customRate.toLocaleString('en-IN')}/sqft Ã— ${area} sqft`;
+      document.getElementById('local-rate-sub').textContent=`@ ₹${customRate.toLocaleString('en-IN')}/sqft × ${area} sqft`;
       document.getElementById('ai-price-compare').textContent=fmt(d.price);
       const delta=document.getElementById('rate-delta');
       delta.className='rate-delta '+(Math.abs(diff)<localPrice*0.02?'equal':diff>0?'higher':'lower');
-      delta.textContent=Math.abs(diff)<localPrice*0.02?'â‰ˆ AI prediction closely matches your local market rate':
-        diff>0?`ðŸ“ˆ AI estimates ${diffPct}% higher (${fmt(Math.abs(diff))}) than local rate`:
-                `ðŸ“‰ AI estimates ${diffPct}% lower (${fmt(Math.abs(diff))}) than local rate`;
+      delta.textContent=Math.abs(diff)<localPrice*0.02?'≈ AI prediction closely matches your local market rate':
+        diff>0?`📈 AI estimates ${diffPct}% higher (${fmt(Math.abs(diff))}) than local rate`:
+                `📉 AI estimates ${diffPct}% lower (${fmt(Math.abs(diff))}) than local rate`;
       rCard.style.display='block';
     } else { rCard.style.display='none'; }
 
@@ -744,7 +744,7 @@ async function predict(){
       const maxArea=d.price_sqft>0?Math.floor(budgetTotal/d.price_sqft):0;
       bCard.className='budget-result-card '+(isWithin?'within':'over');
       bCard.style.display='flex';
-      document.getElementById('budget-icon').textContent=isWithin?'âœ…':'âš ï¸';
+      document.getElementById('budget-icon').textContent=isWithin?'✅':'⚠️';
       const st=document.getElementById('budget-status-text');
       st.textContent=isWithin?'Within Budget!':'Over Budget';
       st.className='budget-status-text '+(isWithin?'within':'over');
@@ -752,14 +752,14 @@ async function predict(){
       const bar=document.getElementById('budget-bar');
       bar.className='budget-bar-fill '+(isWithin?'within':'over');
       setTimeout(()=>{ bar.style.width=pct+'%'; },100);
-      document.getElementById('budget-sqft-tip').textContent=maxArea>0?`With â‚¹${budgetAmt}${budgetUnit===100000?'L':'Cr'} budget you can afford up to ${maxArea} sq ft at â‚¹${d.price_sqft.toLocaleString('en-IN')}/sqft in ${body.location}.`:'';
+      document.getElementById('budget-sqft-tip').textContent=maxArea>0?`With ₹${budgetAmt}${budgetUnit===100000?'L':'Cr'} budget you can afford up to ${maxArea} sq ft at ₹${d.price_sqft.toLocaleString('en-IN')}/sqft in ${body.location}.`:'';
     } else { bCard.style.display='none'; }
 
     // Trigger EMI & ROI with new price
     calcEMI(); calcROI();
     document.getElementById('result').scrollIntoView({behavior:'smooth',block:'start'});
   } catch(e){ alert('Error: Could not reach the server. Is server.py running?'); }
-  btn.disabled=false; btn.textContent='â—ˆ INITIATE VALUATION SCAN â—ˆ';
+  btn.disabled=false; btn.textContent='◈ INITIATE VALUATION SCAN ◈';
 }
 
 function updateCustomRate(){
@@ -768,15 +768,15 @@ function updateCustomRate(){
   const w=parseFloat(document.getElementById('width').value)||0;
   const a=l*w;
   const el=document.getElementById('custom-rate-display');
-  if(r>0&&a>0){ const est=Math.round(r*a); el.innerHTML=`ðŸ“ Rate: â‚¹${r.toLocaleString('en-IN')}/sqft Ã— ${a} sqft = <strong>Local Estimate: ${fmt(est)}</strong>`; }
-  else if(r>0){ el.innerHTML=`ðŸ“ Rate set: â‚¹${r.toLocaleString('en-IN')}/sqft â€” enter dimensions to preview`; }
-  else { el.innerHTML='ðŸ“ Enter your local â‚¹/sqft rate to get a local market estimate alongside AI prediction'; }
+  if(r>0&&a>0){ const est=Math.round(r*a); el.innerHTML=`📊 Rate: ₹${r.toLocaleString('en-IN')}/sqft × ${a} sqft = <strong>Local Estimate: ${fmt(est)}</strong>`; }
+  else if(r>0){ el.innerHTML=`📊 Rate set: ₹${r.toLocaleString('en-IN')}/sqft — enter dimensions to preview`; }
+  else { el.innerHTML='📊 Enter your local ₹/sqft rate to get a local market estimate alongside AI prediction'; }
 }
 
 function updateBudget(){
   const v=parseFloat(document.getElementById('budget-val').value)||0;
   const u=parseInt(document.getElementById('budget-unit').value);
-  document.getElementById('budget-display').innerHTML=`ðŸ’° Max Budget: â‚¹${v} ${u===100000?'L':'Cr'} &nbsp;=&nbsp; â‚¹${(v*u).toLocaleString('en-IN')}`;
+  document.getElementById('budget-display').innerHTML=`💰 Max Budget: ₹${v} ${u===100000?'L':'Cr'} &nbsp;=&nbsp; ₹${(v*u).toLocaleString('en-IN')}`;
 }
 
 // Custom cursor
