@@ -8,21 +8,22 @@
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 :root {
-  --bg: #edf3f7;
-  --panel: #f6f9fc;
-  --panel-strong: #ebf2f7;
-  --surface: #f3f7fa;
-  --line: rgba(167, 181, 196, 0.28);
-  --text: #1f2a37;
-  --muted: #60758a;
-  --primary: #7bb3c9;
-  --primary-strong: #5c9bb1;
-  --secondary: #a7d5c2;
-  --warm: #f4c7b6;
-  --success: #70c6a1;
-  --warning: #e7b675;
-  --danger: #eb8f90;
-  --shadow-dark: rgba(148, 164, 184, 0.18);
+  --bg: #FAFAFA;
+  --panel: #C7C7C7;
+  --panel-strong: #4A4A4A;
+  --surface: #FAFAFA;
+  --line: rgba(74, 74, 74, 0.28);
+  --text: #0A0A0A;
+  --muted: #4A4A4A;
+  --primary: #0A0A0A;
+  --primary-strong: #0A0A0A;
+  --secondary: #4A4A4A;
+  --accent: #C7C7C7;
+  --warm: #C7C7C7;
+  --success: #4A4A4A;
+  --warning: #C7C7C7;
+  --danger: #4A4A4A;
+  --shadow-dark: rgba(10, 10, 10, 0.18);
   --shadow-light: rgba(255, 255, 255, 0.92);
 }
 
@@ -68,9 +69,9 @@ body::before {
   position: fixed;
   inset: 0;
   background:
-    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(123, 179, 201, 0.20), transparent),
-    radial-gradient(ellipse 60% 40% at 80% 110%, rgba(166, 213, 194, 0.15), transparent),
-    radial-gradient(ellipse 40% 30% at 0% 50%, rgba(244, 199, 182, 0.12), transparent);
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(199, 199, 199, 0.20), transparent),
+    radial-gradient(ellipse 60% 40% at 80% 110%, rgba(74, 74, 74, 0.15), transparent),
+    radial-gradient(ellipse 40% 30% at 0% 50%, rgba(10, 10, 10, 0.08), transparent);
   pointer-events: none;
   z-index: 0;
 }
@@ -104,7 +105,7 @@ body::before {
   font-family: 'Orbitron', monospace;
   font-size: 2.6rem;
   font-weight: 900;
-  background: linear-gradient(135deg, var(--primary-strong), var(--secondary), var(--warm));
+  background: linear-gradient(135deg, var(--primary), var(--secondary), var(--warm));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -458,9 +459,9 @@ footer {
 
 <!-- Stats -->
 <div class="stats">
-  <div class="stat"><div class="stat-lbl">Engine</div><div class="stat-val" style="font-size:.75rem;color:#c4b5fd">Random Forest</div></div>
-  <div class="stat"><div class="stat-lbl">Data Source</div><div class="stat-val" style="font-size:.62rem;color:#34d399" title="Bengaluru House Prices (Kaggle) + tier augmentation">Kaggle + Real</div></div>
-  <div class="stat"><div class="stat-lbl">Training Rows</div><div class="stat-val" style="color:#34d399" id="n-train">–</div></div>
+  <div class="stat"><div class="stat-lbl">Engine</div><div class="stat-val" style="font-size:.75rem;color:var(--text)">Random Forest</div></div>
+  <div class="stat"><div class="stat-lbl">Data Source</div><div class="stat-val" style="font-size:.62rem;color:var(--secondary)" title="Bengaluru House Prices (Kaggle) + tier augmentation">Kaggle + Real</div></div>
+  <div class="stat"><div class="stat-lbl">Training Rows</div><div class="stat-val" style="color:var(--secondary)" id="n-train">–</div></div>
   <div class="stat"><div class="stat-lbl">R² Score</div><div class="stat-val" id="r2">–</div></div>
   <div class="stat"><div class="stat-lbl">Avg Error</div><div class="stat-val" id="mae" style="color:var(--pink);font-size:.85rem">–</div></div>
 </div>
@@ -960,8 +961,8 @@ document.addEventListener('mousemove',e=>{ mx=e.clientX; my=e.clientY; dot.style
 function animRing(){ rx+=(mx-rx)*.12; ry+=(my-ry)*.12; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(animRing); }
 animRing();
 document.querySelectorAll('button,select,input,label,.radio-option label').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{ ring.style.width='54px'; ring.style.height='54px'; ring.style.borderColor='rgba(0,245,212,.9)'; dot.style.background='var(--purple)'; });
-  el.addEventListener('mouseleave',()=>{ ring.style.width='36px'; ring.style.height='36px'; ring.style.borderColor='rgba(124,58,237,.7)'; dot.style.background='var(--cyan)'; });
+  el.addEventListener('mouseenter',()=>{ ring.style.width='54px'; ring.style.height='54px'; ring.style.borderColor='var(--accent)'; dot.style.background='var(--primary)'; });
+  el.addEventListener('mouseleave',()=>{ ring.style.width='36px'; ring.style.height='36px'; ring.style.borderColor='var(--primary)'; dot.style.background='var(--primary)'; });
 });
 document.addEventListener('mousedown',()=>{ ring.style.width='20px'; ring.style.height='20px'; });
 document.addEventListener('mouseup',()=>{ ring.style.width='36px'; ring.style.height='36px'; });

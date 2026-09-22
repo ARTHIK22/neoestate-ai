@@ -15,18 +15,19 @@ st.markdown("""
 
 /* ── Base ── */
 :root {
-    --bg: #edf3f8;
-    --panel: #f4f8fb;
-    --panel-strong: #eaf1f6;
-    --text: #1f2a37;
-    --muted: #62758a;
-    --primary: #7bb3c9;
-    --primary-deep: #5a9ab0;
-    --secondary: #a6d7c7;
-    --warm: #f4c7b6;
-    --success: #70c7a1;
-    --danger: #ee8d8d;
-    --shadow-dark: rgba(141, 160, 179, 0.18);
+    --bg: #FAFAFA;
+    --panel: #C7C7C7;
+    --panel-strong: #4A4A4A;
+    --text: #0A0A0A;
+    --muted: #4A4A4A;
+    --primary: #0A0A0A;
+    --primary-deep: #0A0A0A;
+    --secondary: #4A4A4A;
+    --accent: #C7C7C7;
+    --warm: #C7C7C7;
+    --success: #4A4A4A;
+    --danger: #4A4A4A;
+    --shadow-dark: rgba(10, 10, 10, 0.18);
     --shadow-light: rgba(255, 255, 255, 0.95);
 }
 
@@ -41,9 +42,9 @@ html, body, [class*="css"] {
     content: '';
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
     background:
-        radial-gradient(circle at top, rgba(122, 178, 207, 0.20), transparent 40%),
-        radial-gradient(circle at bottom right, rgba(166, 215, 199, 0.18), transparent 30%),
-        radial-gradient(circle at bottom left, rgba(244, 199, 182, 0.18), transparent 30%);
+        radial-gradient(circle at top, rgba(199, 199, 199, 0.20), transparent 40%),
+        radial-gradient(circle at bottom right, rgba(74, 74, 74, 0.18), transparent 30%),
+        radial-gradient(circle at bottom left, rgba(10, 10, 10, 0.08), transparent 30%);
     pointer-events: none; z-index: 0;
 }
 
@@ -200,17 +201,17 @@ html, body, [class*="css"] {
 .tag-pill {
     font-family: 'Orbitron', monospace;
     display: inline-flex; align-items: center; gap: 0.3rem;
-    background: rgba(124,58,237,0.12);
-    border: 1px solid rgba(124,58,237,0.35);
+    background: rgba(199,199,199,0.35);
+    border: 1px solid rgba(74,74,74,0.45);
     border-radius: 20px; padding: 0.2rem 0.65rem;
-    font-size: 0.7rem; color: #c4b5fd;
+    font-size: 0.7rem; color: var(--text);
     letter-spacing: 0.05em;
 }
 
 /* ── Info caption ── */
 .neo-caption {
-    font-size: 0.78rem; color: #6666aa;
-    border-left: 2px solid #7c3aed44;
+    font-size: 0.78rem; color: var(--muted);
+    border-left: 2px solid var(--accent);
     padding-left: 0.6rem; margin: 0.4rem 0;
     font-style: italic;
 }
@@ -218,7 +219,7 @@ html, body, [class*="css"] {
 /* ── Divider ── */
 .neo-divider {
     height: 1px; margin: 1.5rem 0;
-    background: linear-gradient(90deg, transparent, rgba(124,58,237,0.5), rgba(0,245,212,0.3), transparent);
+    background: linear-gradient(90deg, transparent, var(--primary), var(--accent), transparent);
 }
 
 /* ── Override Streamlit widget styles ── */
