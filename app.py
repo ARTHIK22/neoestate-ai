@@ -8,10 +8,34 @@ from sklearn.metrics import r2_score, mean_absolute_error
 
 st.set_page_config(page_title="NeoEstate AI", page_icon="🏠", layout="centered")
 
-# ── FUTURISTIC CSS ──────────────────────────────────────────────────────────
-st.markdown("""
+theme = st.radio("Theme", ["Light", "Dark", "Night"], index=0, horizontal=True, key="theme_toggle")
+THEME_PALETTE = {
+    "Light": {"bg": "#f7f9fc", "panel": "#eef3f8", "sidebar": "#f3f7fb", "text": "#0d1725", "muted": "#4a5b6d", "primary": "#0a0a0a", "secondary": "#4a4a4a"},
+    "Dark": {"bg": "#101922", "panel": "#172634", "sidebar": "#111d2b", "text": "#edf4ff", "muted": "#c2d3e8", "primary": "#dfeeff", "secondary": "#8ab4ff"},
+    "Night": {"bg": "#050914", "panel": "#0d1627", "sidebar": "#0a1220", "text": "#edf6ff", "muted": "#afc8db", "primary": "#eaf4ff", "secondary": "#7bb6ff"},
+}
+
+selected = THEME_PALETTE[theme]
+st.markdown(f"""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap');
+
+:root {{
+    --bg: {selected['bg']};
+    --panel: {selected['panel']};
+    --panel-strong: {selected['panel']};
+    --text: {selected['text']};
+    --muted: {selected['muted']};
+    --primary: {selected['primary']};
+    --primary-deep: {selected['primary']};
+    --secondary: {selected['secondary']};
+    --accent: {selected['secondary']};
+    --warm: {selected['secondary']};
+    --success: #4ec38a;
+    --danger: #ff7a7a;
+    --shadow-dark: rgba(0, 0, 0, 0.28);
+    --shadow-light: rgba(255, 255, 255, 0.04);
+}}
 
 /* ── Base ── */
 :root {
