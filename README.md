@@ -190,7 +190,7 @@ Contributions, issues, and feature requests are welcome!
 1. Fork the project
 2. Create your feature branch: `git checkout -b feature/AmazingFeature`
 3. Commit your changes: `git commit -m 'Add some AmazingFeature'`
-4. Push to the branch: `git push origin feature/AmazingFeature`
+4. Push your branch: `git push origin feature/AmazingFeature`
 5. Open a Pull Request
 
 ---
@@ -210,6 +210,7 @@ Made with ❤️ by **[Arthik Dwivedi](https://github.com/ARTHIK22)**
 ⭐ **If you found this project useful, please consider giving it a star!** ⭐
 
 [![GitHub stars](https://img.shields.io/github/stars/ARTHIK22/neoestate-ai?style=social)](https://github.com/ARTHIK22/neoestate-ai/stargazers)
+
 [![GitHub forks](https://img.shields.io/github/forks/ARTHIK22/neoestate-ai?style=social)](https://github.com/ARTHIK22/neoestate-ai/network/members)
 
 </div>
