@@ -36,7 +36,7 @@ It also includes a **local market comparison** feature — enter your local ₹/
 
 | 🎯 R² Score | 📉 Avg Error | 🏘️ Property Types | 📍 Location Tiers |
 |:-----------:|:------------:|:-----------------:|:-----------------:|
-| **0.93** | **₹18.8 L** | **2** | **4** |
+| **0.55** | **₹36.4 L** | **2** | **4** |
 
 </div>
 
@@ -115,9 +115,10 @@ neoestate-ai/
 | Property | Value |
 |---|---|
 | **Algorithm** | Random Forest Regressor |
-| **Training Rows** | 82 |
-| **R² Score** | 0.93 |
-| **Average Error** | ₹18.8 L |
+| **Data Source** | Kaggle + Real |
+| **Training Rows** | 13,361 |
+| **R² Score** | 0.55 |
+| **Average Error** | ₹36.4 L |
 | **Key Features** | Location, Bathrooms, Area, Bedrooms, House Age, Parking, Furnishing, Condition |
 
 The model is trained on real estate data covering multiple property types and locations across India. Feature importance analysis reveals **Location (29.2%)**, **Bathrooms (25.6%)**, and **Area (23.1%)** as the top three price drivers.
