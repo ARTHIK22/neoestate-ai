@@ -61,26 +61,21 @@ It also includes a **local market comparison** feature — enter your local ₹/
 
 ## 🖼️ Screenshots
 
-### 🏠 Hero & Input Form
-![NeoEstate AI - Hero Section](<img width="1577" height="876" alt="image" src="https://github.com/user-attachments/assets/2220d4a8-258d-45dc-806f-cb57e212afa3" />
-)
-*AI-powered dashboard with model stats: R² Score 0.93, Avg Error ₹18.8L — Location Matrix & Property Type selection*
+### 🏠 Hero, Live Stats & Location Selection
+![NeoEstate AI - Hero Section](screenshots/01-hero-location.png)
+*Model stats panel (Engine, Data Source, Training Rows, R² Score, Avg Error) with Location Tier / City selection and Property Type toggle*
 
-### 📐 Property Details Input
-![Property Details](https://github.com/user-attachments/assets/6fd8f210-baf1-4988-8b52-d790b0df2e6e)
-*Plot dimensions with auto area calculator, Interior details (bedrooms, bathrooms, age), Furnishing status slider & Parking bays*
+### 🏗️ Interior Details, Furnishing & Condition
+![Interior Details](screenshots/02-interior-furnishing.png)
+*Bedrooms, bathrooms & age inputs, Furnishing Status slider, Parking Bays selector, and Property Condition slider*
 
-### ⚙️ Advanced Options
-![Advanced Options](https://github.com/user-attachments/assets/886cef6e-8579-47e6-9121-454d3889bfd1)
-*Property condition slider, Price budget limit (Lakhs/Crores), Custom local ₹/sqft rate input & Initiate Valuation Scan button*
+### 💰 Budget Limit & Custom Local Rate
+![Budget and Rate](screenshots/03-budget-rate.png)
+*Set your maximum budget and enter a custom local ₹/sqft rate to compare against the AI-predicted price*
 
-### 💰 AI Prediction Result
-![AI Prediction Result](https://github.com/user-attachments/assets/74bf2cff-7b1a-494d-8c93-36113a8e9498)
-*Predicted price ₹1.36 Cr with range, Local Market vs AI Model comparison, and over-budget alert with affordability insight*
-
-### 📊 Feature Importance & Furnishing Matrix
-![Feature Importance Chart](https://github.com/user-attachments/assets/6b5218c8-791e-4054-aa03-5767a99f627a)
-*Feature importance: Location 29.2%, Bathrooms 25.6%, Area 23.1% — plus Furnishing × Condition price matrix*
+### 📈 EMI Calculator, Investment ROI & Valuation Scan
+![EMI, ROI and Scan](screenshots/04-emi-roi-scan.png)
+*EMI calculator inputs (down payment, interest rate, tenure), Investment ROI estimator (appreciation & holding period), and the "Initiate Valuation Scan" button*
 
 ---
 
