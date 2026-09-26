@@ -62,7 +62,8 @@ It also includes a **local market comparison** feature — enter your local ₹/
 ## 🖼️ Screenshots
 
 ### 🏠 Hero & Input Form
-![NeoEstate AI - Hero Section](https://github.com/user-attachments/assets/fbe25d45-870e-4735-8116-646c1e7a28b7)
+![NeoEstate AI - Hero Section](<img width="1577" height="876" alt="image" src="https://github.com/user-attachments/assets/2220d4a8-258d-45dc-806f-cb57e212afa3" />
+)
 *AI-powered dashboard with model stats: R² Score 0.93, Avg Error ₹18.8L — Location Matrix & Property Type selection*
 
 ### 📐 Property Details Input
